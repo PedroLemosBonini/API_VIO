@@ -24,9 +24,11 @@ module.exports = class userController {
         (err) => {
           if (err) {
             if (err.code === "ER_DUP_ENTRY") {
-              if (err.message.includes("for key 'email'")) {
+              if (err.message.includes('email')) {
                 return res.status(400).json({ error: "Email já cadastrado" });
-              } else {
+              } 
+              else {
+                console.log(err)
                 return res
                   .status(500)
                   .json({ error: "Erro interno do servidor", err });
