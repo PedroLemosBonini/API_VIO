@@ -1,8 +1,9 @@
 const router = require("express").Router();
 const userController = require("../controller/userController");
+const verifyJWT = require("../services/verifyJWT")
 
 router.post("/user/", userController.createUser);
-router.get("/user/", userController.getAllUsers);
+router.get("/user/",verifyJWT, userController.getAllUsers);
 router.put("/user/", userController.updateUser);
 router.delete("/user/:id", userController.deleteUser);
 router.post("/login/", userController.loginUser);
