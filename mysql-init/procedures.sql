@@ -8,7 +8,7 @@ create procedure registrar_compra(
 begin
     declare v_id_compra int;
 
-    insert into ingresso_compra(data_compra, fk_id_usuario)
+    insert into compra(data_compra, fk_id_usuario)
     values(now(), p_id_usuario);
 
     set v_id_compra = last_insert_id();
