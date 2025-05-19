@@ -7,6 +7,7 @@ module.exports = async function validateCpf(cpf, userId = null) {
 
     connect.query(query, values, (err, results) => {
       if (err) {
+        console.log(err)
         reject("Erro ao verificar CPF");
       } else if (results.length > 0) {
         const cpfCadastrado = results[0].id_usuario;
