@@ -2,15 +2,15 @@ const connect = require("./connect");
 
 module.exports = function testConnect() {
   try {
-    const query = `SELECT "Conexão bem-sucedida" AS Mensagem`;
+    const query = `SELECT 'Conexão bem-sucedida' AS Mensagem`;
     connect.query(query, function (err) {
       if (err) {
-        console.log("Conexão não realizada.", err);
+        console.log("Conexão não realizada", err);
         return;
       }
-      console.log("A conexão com MySQL foi bem-sucedida.");
+      console.log("Conexão realizada com Mysql");
     });
-  } catch(error) {
-    console.error("Erro ao executar a consulta.", error);
+  } catch (error) {
+    console.error("Erro a executar a consulta:", error);
   }
 };

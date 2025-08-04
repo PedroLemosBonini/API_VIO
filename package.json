@@ -1,16 +1,17 @@
 {
-  "name": "put_delete",
+  "name": "bonini",
   "version": "1.0.0",
-  "description": "Criando um CRUD de usuarios",
+  "description": "Criando um Crud de usuarios",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server.js"
   },
-  "author": "Pedro Lemos Bonini",
+  "author": "bonini",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.7.7",
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv-safe": "^9.1.0",
     "express": "^4.21.0",

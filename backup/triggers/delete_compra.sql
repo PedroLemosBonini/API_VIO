@@ -1,11 +1,13 @@
-delimiter //
 
-create trigger trg_after_delete_compra
-after delete on compra
-for each row
-begin
-    insert into historico_compra(id_compra, data_compra, id_usuario) values
-    (old.id_compra, old.data_compra, old.fk_id_usuario);
-end; //
 
-delimiter ;
+DELIMITER //
+
+CREATE TRIGGER trg_after_delete_compra
+AFTER DELETE ON compra
+FOR EACH ROW
+BEGIN 
+    INSERT INTO historico_compra(id_compra, data_compra, id_usuario)
+    VALUES (OLD.id_compra, OLD.data_compra, OLD.fk_id_usuario);
+END; //
+
+DELIMITER ;
