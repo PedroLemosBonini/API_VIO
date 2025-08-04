@@ -251,6 +251,8 @@ CREATE TABLE `presenca` (
 -- Dumping data for table `presenca`
 --
 
+ALTER TABLE evento ADD imagem LONGBLOB;
+
 LOCK TABLES `presenca` WRITE;
 /*!40000 ALTER TABLE `presenca` DISABLE KEYS */;
 /*!40000 ALTER TABLE `presenca` ENABLE KEYS */;
