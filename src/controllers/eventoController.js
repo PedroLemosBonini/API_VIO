@@ -5,6 +5,7 @@ module.exports = class eventoController {
   static async createEvento(req, res) {
     const { nome, descricao, data_hora, local, fk_id_organizador } = req.body;
     const imagem = req.file?.buffer || null;
+    const tipoImagem = req.file?.mimetype || null;
 
     // validação genérica de todos os atributos
     if (!nome || !descricao || !data_hora || !local || !fk_id_organizador) {
@@ -13,8 +14,8 @@ module.exports = class eventoController {
         .json({ error: "Todos os campos devem ser preenchidos!" });
     }
 
-    const query = `insert into evento (nome, descricao, data_hora, local, fk_id_organizador, imagem) values (?, ?, ?, ?, ?, ?)`; //placeholder, transiçao entre os dados que chegam
-    const values = [nome, descricao, data_hora, local, fk_id_organizador, imagem];
+    const query = `insert into evento (nome, descricao, data_hora, local, fk_id_organizador, imagem, tipo_imagem) values (?, ?, ?, ?, ?, ?, ?)`; //placeholder, transiçao entre os dados que chegam
+    const values = [nome, descricao, data_hora, local, fk_id_organizador, imagem, tipoImagem];
     try {
       connect.query(query, values, (err) => {
         if (err) {
@@ -184,8 +185,8 @@ module.exports = class eventoController {
       if(err|| results.length === 0 || !results[0].imagem){
         return res.status(404).send("imagem não foi encontrada");
       }
-      res.set("Content-Type", "image/png");
-      return res.send(results[0].image);
+      res.set("Content-Type", results[0].tipo_imagem);
+      return res.send(results[0].imagem);
     })
 
   }
